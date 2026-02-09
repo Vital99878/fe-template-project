@@ -1,0 +1,24 @@
+<component name="ProjectCodeStyleConfiguration">
+  <code_scheme name="Project" version="173">
+    <option name="LINE_SEPARATOR" value="&#10;" />
+    <JSCodeStyleSettings version="0">
+      <option name="IMPORT_SORT_MODULE_NAME" value="true" />
+    </JSCodeStyleSettings>
+    <TypeScriptCodeStyleSettings version="0">
+      <option name="USE_EXPLICIT_JS_EXTENSION" value="NEVER" />
+      <option name="IMPORT_SORT_MEMBERS" value="false" />
+      <option name="IMPORT_PREFER_ABSOLUTE_PATH" value="TRUE" />
+      <option name="IMPORT_USE_NODE_RESOLUTION" value="GLOBAL" />
+    </TypeScriptCodeStyleSettings>
+    <editorconfig>
+      <option name="ENABLED" value="false" />
+    </editorconfig>
+    <codeStyleSettings language="EditorConfig">
+      <option name="SPACE_BEFORE_COLON" value="true" />
+      <option name="SPACE_AFTER_COLON" value="true" />
+      <indentOptions>
+        <option name="CONTINUATION_INDENT_SIZE" value="4" />
+      </indentOptions>
+    </codeStyleSettings>
+  </code_scheme>
+</component>
