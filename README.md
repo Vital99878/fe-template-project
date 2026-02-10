@@ -307,3 +307,22 @@ Files prefixed with `demo` can be safely deleted. They are there to provide a st
 # Learn More
 
 You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
+
+## Заголовок коммита (первая строка)
+
+Формат **заголовка** (обязательно):
+`<КЛЮЧ> <тип>(<scope>)?: <краткое описание>`
+
+Пример заголовка:
+`ABC-123 feat(api): добавить http client`
+
+Типы:
+build, chore, ci, docs, feat, fix, perf, refactor, revert, style, test
+
+Scope (если указан):
+tooling, repo, config, ci, app, router, api, query, mocks, shared, ui, entities, features, widgets, pages, docs
+
+Длинна всего заголовка:
+<= 100 символов
+
+Тело коммита можно писать свободно, любым языком
