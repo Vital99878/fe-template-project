@@ -10,11 +10,12 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write",
-    "format:check": "prettier --check",
+    "format:check": "prettier --check .",
     "check": "pnpm run check:lockfiles && pnpm run format:check && pnpm run lint",
     "preinstall": "npx -y only-allow pnpm",
     "check:lockfiles": "node scripts/check-lockfiles.cjs",
-    "prepare": "husky"
+    "prepare": "husky",
+    "init:fsd": "node scripts/mk-fsd.cjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.6",
