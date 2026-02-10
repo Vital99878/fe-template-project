@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    name: Quality (lint/format/typecheck/test)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install deps (pnpm)
+        run: pnpm install --frozen-lockfile
+
+      - name: Check forbidden lockfiles
+        run: pnpm run check:lockfiles
+
+      - name: Format check (Prettier)
+        run: pnpm run format:check
+
+      - name: Lint (ESLint)
+        run: pnpm run lint
+
+      - name: Typecheck (tsc)
+        run: pnpm exec tsc -p tsconfig.json --noEmit
+
+      - name: Tests (Vitest)
+        run: pnpm run test
+
+      - name: Commit messages (commitlint) - PR only
+        if: github.event_name == 'pull_request'
+        run: pnpm exec commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
