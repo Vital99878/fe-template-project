@@ -41,6 +41,11 @@ export default function Header() {
           >
             <X size={24} />
           </button>
+
+
+
+
+
         </div>
 
         <nav className="flex-1 p-4 overflow-y-auto">
