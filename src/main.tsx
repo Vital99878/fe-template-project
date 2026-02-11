@@ -5,6 +5,9 @@ import { App } from '@/app/App'
 
 import '@/app/styles/index.css'
 import reportWebVitals from '@/shared/lib/reportWebVitals'
+import { initApi } from '@/app/providers/initApi'
+
+initApi()
 
 const rootElement = document.getElementById('app')
 
