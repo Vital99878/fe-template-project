@@ -33,7 +33,7 @@ export default [
   ...pluginQuery.configs['flat/recommended'],
 
   // Игнорим генерируемое дерево роутов
-  { ignores: ['**/routeTree.gen.ts', 'coverage/**', 'build/**'] },
+  { ignores: ['**/routeTree.gen.ts', 'coverage/**', 'build/**', 'public/mockServiceWorker.js'] },
 
   // Prettier — последним
   eslintConfigPrettier,

@@ -6,17 +6,26 @@ import { App } from '@/app/App'
 import '@/app/styles/index.css'
 import reportWebVitals from '@/shared/lib/reportWebVitals'
 import { initApi } from '@/app/providers/initApi'
+import { startMsw } from '@/shared/api/msw/start'
 
-initApi()
+async function bootstrap() {
+  initApi()
+  await startMsw()
 
-const rootElement = document.getElementById('app')
+  const rootElement = document.getElementById('app')
+  if (rootElement && !rootElement.innerHTML) {
+    ReactDOM.createRoot(rootElement).render(
+      <StrictMode>
+        <App />
+      </StrictMode>,
+    )
+  }
 
-if (rootElement && !rootElement.innerHTML) {
-  ReactDOM.createRoot(rootElement).render(
-    <StrictMode>
-      <App />
-    </StrictMode>,
-  )
+  reportWebVitals()
 }
 
-reportWebVitals()
+bootstrap()
+  .then(() => console.log('Project is started'))
+  .catch((e) => {
+    console.error('Bootstrap failed:', e)
+  })
