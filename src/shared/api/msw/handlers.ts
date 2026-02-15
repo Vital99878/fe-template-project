@@ -1,28 +1,34 @@
 import { withScenario } from './withScenario'
 import { jsonError, jsonOk } from './responses'
 import { api } from '@/shared/api/endpoints'
-import { makeMe, makeUserById, searchUsers } from '@/shared/api/msw/factories/user'
+import { getMe, patchMe } from '@/shared/api/msw/state'
+import { makeUserById, searchUsers } from '@/shared/api/msw/factories/user'
 
 export const handlers = [
   withScenario(api.auth.me, {
-    happy: async () => jsonOk(makeMe()),
+    happy: async () => jsonOk(getMe()),
     forbidden: () => jsonError(403, 'No access'),
   }),
 
   withScenario(api.auth.updateMe, {
     happy: async ({ request }) => {
       const body = (await request.json()) as { name: string }
-      return jsonOk({ ok: true, name: body.name })
+
+      // ✅ stateful: меняем "профиль"
+      const updated = patchMe({ name: body.name })
+
+      // оставляем response shape как у тебя было
+      return jsonOk({ ok: true, name: updated.name })
     },
     forbidden: () => jsonError(403, 'No rights to update profile'),
   }),
 
-  // ✅ path params: /users/:id
+  // ✅ пример path params
   withScenario(api.users.byId, {
     happy: ({ params }) => jsonOk(makeUserById(String(params.id))),
   }),
 
-  // ✅ query params: /users?q=...&limit=...
+  // ✅ пример query params
   withScenario(api.users.search, {
     happy: ({ request }) => {
       const url = new URL(request.url)

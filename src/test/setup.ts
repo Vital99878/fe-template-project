@@ -1,7 +1,16 @@
 import { afterAll, afterEach, beforeAll } from 'vitest'
 import { server } from '@/shared/api/msw/server'
+import { initApi } from '@/app/providers/initApi'
+import { resetMswState } from '@/shared/api/msw/state'
 
-// В тестах лучше "error", чтобы тест падал, если забыли handler. :contentReference[oaicite:6]{index=6}
-beforeAll(() => server.listen({ onUnhandledRequest: 'error' }))
-afterEach(() => server.resetHandlers())
+beforeAll(() => {
+  initApi()
+  server.listen({ onUnhandledRequest: 'error' })
+})
+
+afterEach(() => {
+  server.resetHandlers()
+  resetMswState()
+})
+
 afterAll(() => server.close())
