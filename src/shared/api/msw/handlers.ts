@@ -1,3 +1,4 @@
+import { HttpResponse } from 'msw'
 import { withScenario } from './withScenario'
 import { jsonError, jsonOk } from './responses'
 import { api } from '@/shared/api/endpoints'
@@ -14,11 +15,11 @@ export const handlers = [
     happy: async ({ request }) => {
       const body = (await request.json()) as { name: string }
 
-      // ✅ stateful: меняем "профиль"
-      const updated = patchMe({ name: body.name })
+      // ✅ stateful mock: меняем "профиль"
+      patchMe({ name: body.name })
 
-      // оставляем response shape как у тебя было
-      return jsonOk({ ok: true, name: updated.name })
+      // 204 No Content
+      return new HttpResponse(null, { status: 204 })
     },
     forbidden: () => jsonError(403, 'No rights to update profile'),
   }),

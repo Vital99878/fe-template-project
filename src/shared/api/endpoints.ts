@@ -9,7 +9,7 @@ export type User = { id: string; name: string }
 export const api = {
   auth: {
     me: endpoint<void, GetMeResponse>('GET', '/me'),
-    updateMe: endpoint<UpdateMeRequest, UpdateMeResponse>('PATCH', '/me'),
+    updateMe: endpoint<UpdateMeRequest, void>('PATCH', '/me'),
   },
   users: {
     // path params пример

@@ -51,7 +51,7 @@ export async function request<TEndpoint extends Endpoint<any, any, any, any>>(
     ? compilePath(endpoint.path, args.path as Record<string, string | number>)
     : endpoint.path
 
-  const { data } = await httpClient.request<InferRes<TEndpoint>>({
+  const { data, status } = await httpClient.request<InferRes<TEndpoint>>({
     url,
     method: endpoint.method,
     params: args?.query,
@@ -59,5 +59,5 @@ export async function request<TEndpoint extends Endpoint<any, any, any, any>>(
     ...args?.config,
   })
 
-  return data
+  return (status === 204 ? undefined : data) as InferRes<TEndpoint>
 }
