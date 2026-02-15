@@ -250,9 +250,7 @@ function App() {
   const count = useStore(countStore)
   return (
     <div>
-      <button onClick={() => countStore.setState((n) => n + 1)}>
-        Increment - {count}
-      </button>
+      <button onClick={() => countStore.setState((n) => n + 1)}>Increment - {count}</button>
     </div>
   )
 }
@@ -283,9 +281,7 @@ function App() {
 
   return (
     <div>
-      <button onClick={() => countStore.setState((n) => n + 1)}>
-        Increment - {count}
-      </button>
+      <button onClick={() => countStore.setState((n) => n + 1)}>Increment - {count}</button>
       <div>Doubled - {doubledCount}</div>
     </div>
   )
@@ -303,10 +299,6 @@ You can find out everything you need to know on how to use TanStack Store in the
 # Demo files test commit msg
 
 Files prefixed with `demo` can be safely deleted. They are there to provide a starting point for you to play around with the features you've installed.
-
-# Learn More
-
-You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
 
 ## Заголовок коммита (первая строка)
 
@@ -326,3 +318,29 @@ tooling, repo, config, ci, app, router, api, query, mocks, shared, ui, entities,
 <= 100 символов
 
 Тело коммита можно писать свободно, любым языком
+
+## API + MSW: как добавить новый эндпоинт
+
+В шаблоне API устроен так:
+
+- `registry` эндпоинтов: `src/shared/api/endpoints.ts`
+- единый вызов запросов: `src/shared/api/request.ts`
+- обвязка TanStack Query: `src/shared/api/reactQuery.ts`
+- MSW (моки): `src/shared/api/msw/*`
+
+### 1) Добавить эндпоинт в registry
+
+Файл: `src/shared/api/endpoints.ts`
+
+```ts
+import { endpoint } from './endpoint'
+
+// Пример: GET /users/:id
+export type User = { id: string; name: string }
+
+export const api = {
+  users: {
+    byId: endpoint<void, User, void, { id: string }>('GET', '/users/:id'),
+  },
+} as const
+```

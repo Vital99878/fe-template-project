@@ -1,21 +1,25 @@
-import { HttpResponse, delay } from 'msw'
-import { makeHandler } from './makeHandler'
-import { api } from '@/shared/api/index'
+import { withScenario } from './withScenario'
+import { jsonError, jsonOk } from './responses'
+import { makeMe } from './factories'
+import { api } from '@/shared/api/endpoints'
 
 export const handlers = [
-  // GET /me
-  makeHandler(api.auth.me, async () => {
-    await delay() // реалистичная задержка 100–400ms :contentReference[oaicite:2]{index=2}
-    return HttpResponse.json({ id: '1', name: 'Виталий' })
+  withScenario(api.auth.me, {
+    happy: async () => jsonOk(makeMe({ id: '11' })),
+    forbidden: () => jsonError(404, 'Page does not exist'),
+
+    // пример точечного сценария для одного эндпоинта (опционально)
+    // serverError: () => jsonError(500, 'ME endpoint exploded'),
   }),
 
-  // PATCH /me
-  makeHandler(api.auth.updateMe, async ({ request }) => {
-    const body = (await request.json()) as { name: string }
-    return HttpResponse.json({ ok: true, name: body.name })
-  }),
+  withScenario(api.auth.updateMe, {
+    happy: async ({ request }) => {
+      const body = (await request.json()) as { name: string }
+      return jsonOk({ ok: true, name: body.name })
+    },
 
-  // Пример для path params: GET /users/:id
-  // MSW умеет `:id` и отдаёт params в resolver :contentReference[oaicite:3]{index=3}
-  // makeHandler(api.users.byId, ({ params }) => HttpResponse.json({ id: params.id, name: '...' })),
+    // например, можно дать “валидацию” для этого эндпоинта
+    // (это не новый сценарий, просто кастом на serverError/forbidden и т.п.)
+    forbidden: () => jsonError(403, 'No rights to update profile'),
+  }),
 ]
