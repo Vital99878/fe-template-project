@@ -1,0 +1,69 @@
+:root {
+  --color-bg: 255 255 255;
+  --color-text: 24 24 27;
+  --radius-md: 12px;
+  --space-4: 16px;
+}
+
+html.dark {
+  --color-bg: 9 9 11;
+  --color-text: 244 244 245;
+}
+
+@layer base {
+  :root {
+    /* Цвета (light) */
+    --color-bg: 255 255 255;
+    --color-fg: 24 24 27;
+    --color-muted: 113 113 122;
+    --color-border: 228 228 231;
+
+    --color-card: 255 255 255;
+    --color-card-fg: 24 24 27;
+
+    --color-primary: 24 24 27;
+    --color-primary-fg: 255 255 255;
+
+    --color-danger: 220 38 38;
+    --color-danger-fg: 255 255 255;
+
+    /* Радиусы */
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 18px;
+
+    /* Отступы */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+
+    /* Тени (минимум, чтобы было “живое”) */
+    --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.06);
+    --shadow-md: 0 8px 24px rgb(0 0 0 / 0.1);
+
+    /* Чтобы элементы формы нативно подстраивались */
+    color-scheme: light;
+  }
+
+  html.dark {
+    /* Цвета (dark) */
+    --color-bg: 9 9 11;
+    --color-fg: 244 244 245;
+    --color-muted: 161 161 170;
+    --color-border: 39 39 42;
+
+    --color-card: 24 24 27;
+    --color-card-fg: 244 244 245;
+
+    --color-primary: 244 244 245;
+    --color-primary-fg: 9 9 11;
+
+    --color-danger: 248 113 113;
+    --color-danger-fg: 9 9 11;
+
+    color-scheme: dark;
+  }
+}

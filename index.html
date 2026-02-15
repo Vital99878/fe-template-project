@@ -1,6 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script>
+      ;(() => {
+        try {
+          const STORAGE_KEY = 'theme:mode'
+          const mode = localStorage.getItem(STORAGE_KEY) || 'system'
+
+          const systemDark =
+            window.matchMedia &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches
+
+          const resolved = mode === 'system' ? (systemDark ? 'dark' : 'light') : mode
+
+          const root = document.documentElement
+          root.classList.toggle('dark', resolved === 'dark')
+          root.dataset.theme = resolved
+        } catch {
+          // если localStorage недоступен — просто не мешаем загрузке
+        }
+      })()
+    </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
