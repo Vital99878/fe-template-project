@@ -12,7 +12,9 @@ export const api = {
     updateMe: endpoint<UpdateMeRequest, UpdateMeResponse>('PATCH', '/me'),
   },
   users: {
+    // path params пример
     byId: endpoint<void, User, void, { id: string }>('GET', '/users/:id'),
+    // query params пример
     search: endpoint<void, Array<User>, { q: string; limit?: number }>('GET', '/users'),
   },
 } as const
