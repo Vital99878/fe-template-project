@@ -11,7 +11,7 @@ export function ThemeSwitch() {
   const { mode, setMode } = useTheme()
 
   return (
-    <div className="inline-flex rounded-[var(--radius-md)] border border-[rgb(var(--color-border))] bg-[rgb(var(--color-card))] p-1 shadow-[var(--shadow-sm)]">
+    <div className="border-border bg-card inline-flex rounded-md border p-1 shadow-sm">
       {modes.map((m) => {
         const active = m.mode === mode
         return (
@@ -20,10 +20,8 @@ export function ThemeSwitch() {
             type="button"
             onClick={() => setMode(m.mode)}
             className={[
-              'rounded-[var(--radius-sm)] px-3 py-1.5 text-sm transition',
-              active
-                ? 'bg-[rgb(var(--color-primary))] text-[rgb(var(--color-primary-fg))]'
-                : 'text-[rgb(var(--color-fg))] hover:bg-[rgb(var(--color-border)/0.35)]',
+              'rounded-sm px-3 py-1.5 text-sm transition',
+              active ? 'bg-primary text-primary-fg' : 'text-fg hover:bg-border/70',
             ].join(' ')}
             aria-pressed={active}
           >
