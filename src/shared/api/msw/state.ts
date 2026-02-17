@@ -1,9 +1,10 @@
-import { makeMe } from './factories/user'
+import { makeUser } from './factories/user'
 import type { User } from './factories/user'
+import { resetUsersDb } from '@/shared/api/msw/db/usersDb'
 
 const STORAGE_KEY = 'msw:state:me'
 
-let me: User = loadFromStorage() ?? makeMe()
+let me: User = loadFromStorage() ?? makeUser()
 
 function loadFromStorage(): User | null {
   if (typeof window === 'undefined') return null
@@ -41,6 +42,7 @@ export function setMe(next: User): User {
 }
 
 export function resetMswState(): void {
-  me = makeMe()
+  me = makeUser()
   saveToStorage()
+  resetUsersDb(40)
 }

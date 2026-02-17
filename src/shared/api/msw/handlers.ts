@@ -3,7 +3,8 @@ import { withScenario } from './withScenario'
 import { jsonError, jsonOk } from './responses'
 import { api } from '@/shared/api/endpoints'
 import { getMe, patchMe } from '@/shared/api/msw/state'
-import { makeUserById, searchUsers } from '@/shared/api/msw/factories/user'
+import { getUserById, searchUsers } from '@/shared/api/msw/db/usersDb'
+import { getEnum, getInt, getString } from '@/shared/api/msw/lib/query'
 
 export const handlers = [
   withScenario(api.auth.me, {
@@ -24,20 +25,28 @@ export const handlers = [
     forbidden: () => jsonError(403, 'No rights to update profile'),
   }),
 
-  // ✅ пример path params
+  // ✅ path params: /users/:id
   withScenario(api.users.byId, {
-    happy: ({ params }) => jsonOk(makeUserById(String(params.id))),
+    happy: ({ params }) => {
+      const id = String(params.id)
+      const user = getUserById(id)
+      if (!user) return jsonError(404, `User ${id} not found`)
+      return jsonOk(user)
+    },
   }),
 
-  // ✅ пример query params
+  // ✅ query params: /users?q=&page=&limit=&sort=&order=
   withScenario(api.users.search, {
     happy: ({ request }) => {
       const url = new URL(request.url)
-      const q = url.searchParams.get('q') ?? undefined
-      const limitRaw = url.searchParams.get('limit')
-      const limit = limitRaw ? Number(limitRaw) : undefined
 
-      return jsonOk(searchUsers({ q, limit }))
+      const q = getString(url, 'q')
+      const page = getInt(url, 'page', { min: 1 }) ?? 1
+      const limit = getInt(url, 'limit', { min: 1, max: 100 }) ?? 10
+      const sort = getEnum(url, 'sort', ['name', 'createdAt'] as const) ?? 'createdAt'
+      const order = getEnum(url, 'order', ['asc', 'desc'] as const) ?? 'desc'
+
+      return jsonOk(searchUsers({ q, page, limit, sort, order }))
     },
   }),
 ]
