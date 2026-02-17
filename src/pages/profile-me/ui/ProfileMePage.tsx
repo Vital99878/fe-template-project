@@ -1,16 +1,18 @@
 import { api } from '@/shared/api'
 import { apiQueryKey, useApiQuery } from '@/shared/api/reactQuery'
+import { PageQueryGuard } from '@/shared/ui/PageQueryGuard/PageQueryGuard'
 
 export function ProfileMePage() {
-  const meKey = apiQueryKey(api.auth.me)
+  const queryKey = apiQueryKey(api.auth.me)
   const q = useApiQuery(api.auth.me)
 
-  if (q.status === 'pending') return <div>loading…</div>
-
-  if (q.status === 'error') {
-    // даём boundary возможность сделать retry точечно
-    throw Object.assign(q.error, { __queryKey: meKey })
-  }
-
-  return <div>{q.data.name}</div>
+  return (
+    <PageQueryGuard
+      query={q}
+      queryKey={queryKey}
+      loading={<div className="text-muted p-6 text-sm">Загрузка…</div>}
+    >
+      {(data) => <div>{data.name}</div>}
+    </PageQueryGuard>
+  )
 }
