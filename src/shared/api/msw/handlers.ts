@@ -8,7 +8,7 @@ import { getEnum, getInt, getString } from '@/shared/api/msw/lib/query'
 
 export const handlers = [
   withScenario(api.auth.me, {
-    happy: async () => jsonOk(getMe()),
+    happy: async () => await jsonOk(getMe()),
     forbidden: () => jsonError(403, 'No access'),
   }),
 

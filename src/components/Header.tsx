@@ -2,7 +2,7 @@ import { Link } from '@tanstack/react-router'
 
 import { Home, Menu, X } from 'lucide-react'
 import { useState } from 'react'
-import { ThemeSwitch } from '@/features/theme-switch/index'
+import { ThemeSwitch } from '@/features'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)

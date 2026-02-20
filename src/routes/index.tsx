@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import logo from '../logo.svg'
-import { AppLink } from '@/shared/ui/link/AppLink'
+import { AppLink } from '../shared/ui'
 
 export const Route = createFileRoute('/')({
   component: App,

@@ -37,4 +37,29 @@ export default [
 
   // Prettier — последним
   eslintConfigPrettier,
+
+  {
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              group: ['@/features/*/*'],
+              message:
+                'Импортируйте из папки фичи через index.ts (import { Something } from "@/features/feature-name")',
+            },
+            {
+              group: ['@/shared/ui/*/*'],
+              message: 'UI компоненты должны импортироваться через shared/ui/index.ts',
+            },
+            {
+              group: ['**/src/**'],
+              message: 'Не используйте пути с /src/ в импортах, используйте алиасы',
+            },
+          ],
+        },
+      ],
+    },
+  },
 ]

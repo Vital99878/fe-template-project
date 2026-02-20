@@ -1,1 +1,1 @@
-export * from '@/features/theme-switcher/theme-switch/ThemeSwitch'
+export * from './ThemeSwitch'
