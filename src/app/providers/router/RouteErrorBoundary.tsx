@@ -1,7 +1,7 @@
 import { useQueryClient } from '@tanstack/react-query'
 import type { QueryKey } from '@tanstack/react-query'
 import type { ErrorComponentProps } from '@tanstack/react-router'
-import { ErrorScreen } from '@/shared/ui/ErrorScreen/ErrorScreen'
+import { ErrorScreen } from '@/shared/ui/error-screen/ErrorScreen'
 
 function extractQueryKey(error: unknown): QueryKey | undefined {
   return typeof error === 'object' && error && '__queryKey' in error

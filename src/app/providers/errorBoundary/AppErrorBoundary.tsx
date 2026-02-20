@@ -1,6 +1,6 @@
 import React from 'react'
 import type { ReactNode } from 'react'
-import { ErrorScreen } from '@/shared/ui/ErrorScreen/ErrorScreen'
+import { ErrorScreen } from '@/shared/ui/error-screen/ErrorScreen'
 
 type Props = { children: ReactNode }
 type State = { error: unknown | null }
