@@ -1,5 +1,6 @@
 export * from './button'
 export * from './link/AppLink'
 export * from './input'
+export * from './textarea'
 export * from './field/Field'
 export * from './Inline-error/InlineError'
