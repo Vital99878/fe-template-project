@@ -1,3 +1,6 @@
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+import storybook from 'eslint-plugin-storybook'
+
 // @ts-check
 
 import { tanstackConfig } from '@tanstack/eslint-config'
@@ -17,27 +20,24 @@ export default [
       'dist/**',
     ],
   },
-
-  ...tanstackConfig,
-
-  // React Hooks
+  ...tanstackConfig, // React Hooks
   {
     plugins: { 'react-hooks': reactHooks },
     rules: reactHooks.configs.recommended.rules,
+  }, // TanStack Router
+  ...pluginRouter.configs['flat/recommended'], // TanStack Query
+  ...pluginQuery.configs['flat/recommended'], // Игнорим генерируемое дерево роутов
+  {
+    ignores: [
+      '**/routeTree.gen.ts',
+      'coverage/**',
+      'build/**',
+      'public/mockServiceWorker.js',
+      '.storybook/**',
+    ],
   },
-
-  // TanStack Router
-  ...pluginRouter.configs['flat/recommended'],
-
-  // TanStack Query
-  ...pluginQuery.configs['flat/recommended'],
-
-  // Игнорим генерируемое дерево роутов
-  { ignores: ['**/routeTree.gen.ts', 'coverage/**', 'build/**', 'public/mockServiceWorker.js'] },
-
   // Prettier — последним
   eslintConfigPrettier,
-
   {
     rules: {
       'no-restricted-imports': [
@@ -62,4 +62,5 @@ export default [
       ],
     },
   },
+  ...storybook.configs['flat/recommended'],
 ]
