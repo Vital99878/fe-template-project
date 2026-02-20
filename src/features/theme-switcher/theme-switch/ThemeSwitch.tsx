@@ -1,5 +1,5 @@
-import type { ThemeMode } from '@/app/providers/theme'
-import { useTheme } from '@/app/providers/theme'
+import type { ThemeMode } from '@/app/providers/theme/index'
+import { useTheme } from '@/app/providers/theme/index'
 
 const modes: Array<{ mode: ThemeMode; label: string }> = [
   { mode: 'system', label: 'System' },
