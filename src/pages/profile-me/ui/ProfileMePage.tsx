@@ -1,6 +1,6 @@
 import { api } from '@/shared/api'
 import { apiQueryKey, useApiQuery } from '@/shared/api/reactQuery'
-import { Button, Field, Input, LinkAsButton } from '@/shared/ui'
+import { Button, Field, Input, LinkAsButton, Textarea } from '@/shared/ui'
 import { PageQueryGuard } from '@/shared/ui/blocks/'
 
 export function ProfileMePage() {
@@ -26,6 +26,9 @@ export function ProfileMePage() {
 
           <Field label={'some'}>
             <Input uiSize={'lg'} />
+          </Field>
+          <Field label={'О себе'} hint={'Пара предложений'}>
+            <Textarea />
           </Field>
         </div>
       )}
