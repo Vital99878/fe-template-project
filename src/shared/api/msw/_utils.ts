@@ -34,6 +34,22 @@ export function hashToInt(s: string) {
   return Math.abs(h)
 }
 
+/**
+ * Приводит число к целому и ограничивает его заданным диапазоном.
+ *
+ * Алгоритм:
+ * - Если `value` не является конечным числом (`NaN`, `Infinity`, `-Infinity`) — возвращает `min`.
+ * - Отбрасывает дробную часть через `Math.trunc` (округление к нулю).
+ * - «Зажимает» результат в диапазон [`min`, `max`].
+ *
+ * Примеры:
+ * - clampInt(5.7, 0, 10) -> 5
+ * - clampInt(-2, 0, 10) -> 0
+ * - clampInt(999, 0, 10) -> 10
+ * - clampInt(NaN, 0, 10) -> 0
+ *
+ * Типичные сценарии: пагинация (page/limit), индексы, значения с UI-инпутов.
+ */
 export function clampInt(value: number, min: number, max: number) {
   if (!Number.isFinite(value)) return min
   return Math.min(max, Math.max(min, Math.trunc(value)))
