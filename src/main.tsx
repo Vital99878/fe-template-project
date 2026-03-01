@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client'
 import { App } from '@/app/App'
 import { initApi } from '@/app/providers/initApi'
 
-import { startMsw } from '@/shared/api/msw/start'
+import { startMsw } from '@/shared/api/msw'
 import reportWebVitals from '@/shared/lib/reportWebVitals'
 
 import '@/app/styles/index.css'

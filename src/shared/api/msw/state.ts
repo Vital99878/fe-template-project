@@ -1,4 +1,4 @@
-import { resetUsersDb } from '@/shared/api/msw/db/usersDb'
+import { resetUsersDb } from '@/shared/api/msw'
 
 import type { User } from './factories/user'
 import { makeUser } from './factories/user'

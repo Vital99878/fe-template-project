@@ -4,8 +4,7 @@ import { afterAll, afterEach, beforeAll } from 'vitest'
 
 import { initApi } from '@/app/providers/initApi'
 
-import { server } from '@/shared/api/msw/server'
-import { resetMswState } from '@/shared/api/msw/state'
+import { resetMswState, server } from '@/shared/api/msw'
 
 beforeAll(() => {
   initApi()

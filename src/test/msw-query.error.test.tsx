@@ -6,8 +6,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { initApi } from '@/app/providers/initApi'
 
 import { api } from '@/shared/api'
-import { makeHandler } from '@/shared/api/msw/makeHandler'
-import { server } from '@/shared/api/msw/server'
+import { makeHandler, server } from '@/shared/api/msw'
 import { useApiQuery } from '@/shared/api/reactQuery'
 
 function createTestQueryClient() {

@@ -46,6 +46,10 @@ export default [
         {
           patterns: [
             {
+              group: ['**/src/**'],
+              message: 'Не используйте пути с /src/ в импортах, используйте алиасы',
+            },
+            {
               group: ['@/features/*/*'],
               message:
                 'Импортируйте из папки фичи через index.ts (import { Something } from "@/features/feature-name")',
@@ -55,8 +59,9 @@ export default [
               message: 'UI компоненты должны импортироваться через shared/ui/index.ts',
             },
             {
-              group: ['**/src/**'],
-              message: 'Не используйте пути с /src/ в импортах, используйте алиасы',
+              group: ['@/shared/api/*/*'],
+              message:
+                'Импортируйте из shared/api подмодулей через их index.ts (например "@/shared/api/msw")',
             },
           ],
         },

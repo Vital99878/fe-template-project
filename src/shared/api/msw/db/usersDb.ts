@@ -1,5 +1,5 @@
-import type { User } from '@/shared/api/msw/factories/user'
-import { makeUsers, resetUserSeq } from '@/shared/api/msw/factories/user'
+import type { User } from '@/shared/api/msw'
+import { makeUsers, resetUserSeq } from '@/shared/api/msw'
 
 let users: Array<User> = []
 

@@ -1,9 +1,15 @@
 import { HttpResponse } from 'msw'
 
 import { api } from '@/shared/api/endpoints'
-import { getUserById, searchUsers } from '@/shared/api/msw/db/usersDb'
-import { getEnum, getInt, getString } from '@/shared/api/msw/lib/query'
-import { getMe, patchMe } from '@/shared/api/msw/state'
+import {
+  getEnum,
+  getInt,
+  getMe,
+  getString,
+  getUserById,
+  patchMe,
+  searchUsers,
+} from '@/shared/api/msw'
 
 import { jsonError, jsonOk } from './responses'
 import { withScenario } from './withScenario'
