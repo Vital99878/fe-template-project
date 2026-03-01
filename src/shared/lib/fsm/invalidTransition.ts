@@ -1,4 +1,4 @@
-import type { ConfirmEvent, ConfirmState } from '@/shared/lib/fsm/confirmFsm'
+import type { ConfirmEvent, ConfirmState } from './confirmFsm.types'
 
 export function invalidTransition(state: ConfirmState, event: ConfirmEvent): ConfirmState {
   // In production, we keep UI stable.

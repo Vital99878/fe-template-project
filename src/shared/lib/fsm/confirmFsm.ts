@@ -1,24 +1,11 @@
 import { assertNever } from './assertNever'
 import { invalidTransition } from './invalidTransition'
+import type { ConfirmEvent, ConfirmState } from './confirmFsm.types'
 
 // Production-friendly FSM template:
 // - Discriminated unions for State/Event
 // - Exhaustive switch on state.type
 // - Invalid transitions are logged in dev, ignored in prod (returns same state)
-
-export type ConfirmState =
-  | { type: 'closed' }
-  | { type: 'confirming'; id: string }
-  | { type: 'loading'; id: string }
-  | { type: 'error'; id: string; message: string }
-
-export type ConfirmEvent =
-  | { type: 'OPEN'; id: string }
-  | { type: 'CLOSE' }
-  | { type: 'CONFIRM' } // first attempt
-  | { type: 'RETRY' } // retry from error
-  | { type: 'SUCCESS' }
-  | { type: 'FAIL'; message: string }
 
 export function confirmReducer(state: ConfirmState, event: ConfirmEvent): ConfirmState {
   switch (state.type) {
