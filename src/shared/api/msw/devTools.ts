@@ -1,3 +1,6 @@
+import { api } from '@/shared/api/endpoints'
+
+import type { MockScenario } from './mockConfig'
 import {
   getMockConfig,
   resetMockConfig,
@@ -5,8 +8,6 @@ import {
   setEndpointScenario,
 } from './mockConfig'
 import { getMe, resetMswState, setMe } from './state'
-import type { MockScenario } from './mockConfig'
-import { api } from '@/shared/api/endpoints'
 
 export function exposeMswDevTools() {
   if (!import.meta.env.DEV) return

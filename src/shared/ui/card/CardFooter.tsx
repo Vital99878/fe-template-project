@@ -1,5 +1,6 @@
-import { cardFooterClasses } from './cardClasses'
 import type { HTMLAttributes } from 'react'
+
+import { cardFooterClasses } from './cardClasses'
 
 type Props = HTMLAttributes<HTMLDivElement>
 

@@ -1,8 +1,10 @@
 import { RouterProvider } from '@tanstack/react-router'
-import { ThemeProvider } from './providers/theme'
-import { router } from '@/app/router/router'
+
 import { AppErrorBoundary } from '@/app/providers/errorBoundary/AppErrorBoundary'
 import { QueryProvider } from '@/app/providers/QueryProvider'
+import { router } from '@/app/router/router'
+
+import { ThemeProvider } from './providers/theme'
 
 export function App() {
   return (

@@ -1,5 +1,6 @@
 import React from 'react'
 import type { ReactNode } from 'react'
+
 import { ErrorScreen } from '@/shared/ui/blocks'
 
 type Props = { children: ReactNode }

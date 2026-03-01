@@ -1,5 +1,6 @@
-import { normalizeError } from './normalizeError'
 import type { AxiosInstance } from 'axios'
+
+import { normalizeError } from './normalizeError'
 
 export function attachInterceptors(client: AxiosInstance) {
   client.interceptors.response.use(

@@ -1,5 +1,6 @@
-import { exposeMswDevTools } from './devTools'
 import { resetUsersDb } from '@/shared/api/msw/db/usersDb'
+
+import { exposeMswDevTools } from './devTools'
 
 export async function startMsw() {
   if (!import.meta.env.DEV) return

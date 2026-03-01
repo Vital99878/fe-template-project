@@ -1,6 +1,7 @@
 // src/shared/ui/PageQueryGuard/PageQueryGuard.tsx
-import type { ReactNode } from 'react'
 import type { QueryKey, UseQueryResult } from '@tanstack/react-query'
+import type { ReactNode } from 'react'
+
 import type { AppError } from '@/shared/api/index'
 
 type Props<TData> = {

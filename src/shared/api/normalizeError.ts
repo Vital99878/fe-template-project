@@ -1,5 +1,6 @@
-import { isAxiosError } from 'axios'
 import type { AxiosError } from 'axios'
+import { isAxiosError } from 'axios'
+
 import type { AppError } from './types'
 
 /**

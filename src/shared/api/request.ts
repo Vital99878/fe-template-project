@@ -1,6 +1,7 @@
-import { httpClient } from './httpClient'
 import type { AxiosRequestConfig } from 'axios'
+
 import type { Endpoint, InferPath, InferQuery, InferReq, InferRes } from './endpoint'
+import { httpClient } from './httpClient'
 
 type RequestOptions = Omit<AxiosRequestConfig, 'url' | 'method' | 'data' | 'params'>
 

@@ -1,7 +1,7 @@
-import { describe, expect, it } from 'vitest'
+import { QueryClient, QueryClientProvider, useQueryClient } from '@tanstack/react-query'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { QueryClient, QueryClientProvider, useQueryClient } from '@tanstack/react-query'
+import { describe, expect, it } from 'vitest'
 
 import { api } from '@/shared/api'
 import { apiQueryKey, useApiMutation, useApiQuery } from '@/shared/api/reactQuery'

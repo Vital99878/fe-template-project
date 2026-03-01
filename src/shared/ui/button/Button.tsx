@@ -1,7 +1,9 @@
-import { buttonClasses } from './buttonClasses'
-import type { ButtonSize, ButtonVariant } from './buttonClasses'
 import type { ButtonHTMLAttributes, ReactNode } from 'react'
+
 import { Spinner } from '@/shared/ui/spinner'
+
+import type { ButtonSize, ButtonVariant } from './buttonClasses'
+import { buttonClasses } from './buttonClasses'
 
 type Props = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> & {
   variant?: ButtonVariant

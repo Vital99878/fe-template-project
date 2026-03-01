@@ -1,13 +1,14 @@
-import { beforeAll, describe, expect, it } from 'vitest'
-import { render, screen } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { render, screen } from '@testing-library/react'
 import { HttpResponse } from 'msw'
+import { beforeAll, describe, expect, it } from 'vitest'
+
+import { initApi } from '@/app/providers/initApi'
 
 import { api } from '@/shared/api'
-import { useApiQuery } from '@/shared/api/reactQuery'
-import { server } from '@/shared/api/msw/server'
 import { makeHandler } from '@/shared/api/msw/makeHandler'
-import { initApi } from '@/app/providers/initApi'
+import { server } from '@/shared/api/msw/server'
+import { useApiQuery } from '@/shared/api/reactQuery'
 
 function createTestQueryClient() {
   return new QueryClient({

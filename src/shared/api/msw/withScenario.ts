@@ -1,10 +1,12 @@
+import type { HttpHandler, HttpResponseResolver } from 'msw'
 import { HttpResponse } from 'msw'
+
+import type { Endpoint } from '@/shared/api/endpoint'
+
 import { makeHandler } from './makeHandler'
+import type { MockScenario } from './mockConfig'
 import { resolveScenario } from './mockConfig'
 import { forbidden, serverError, timeoutForever, unauthorized } from './responses'
-import type { MockScenario } from './mockConfig'
-import type { Endpoint } from '@/shared/api/endpoint'
-import type { HttpHandler, HttpResponseResolver } from 'msw'
 
 type ScenarioResolvers = Partial<Record<MockScenario, HttpResponseResolver>>
 

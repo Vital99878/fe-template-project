@@ -1,6 +1,7 @@
-import { inputClasses } from './inputClasses'
-import type { InputSize } from './inputClasses'
 import type { InputHTMLAttributes } from 'react'
+
+import type { InputSize } from './inputClasses'
+import { inputClasses } from './inputClasses'
 
 type Props = InputHTMLAttributes<HTMLInputElement> & {
   uiSize?: InputSize

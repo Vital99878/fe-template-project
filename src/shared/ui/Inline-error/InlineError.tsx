@@ -1,5 +1,6 @@
 import { AlertTriangle } from 'lucide-react'
 import type { ReactNode } from 'react'
+
 import { toAppError } from '@/shared/lib/errors/toAppError'
 
 type InlineErrorProps = {

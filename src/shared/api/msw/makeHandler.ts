@@ -1,5 +1,6 @@
-import { http } from 'msw'
 import type { HttpHandler, HttpResponseResolver } from 'msw'
+import { http } from 'msw'
+
 import type { Endpoint } from '@/shared/api/index'
 
 export function makeHandler(

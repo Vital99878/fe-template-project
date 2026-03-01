@@ -1,5 +1,5 @@
-import { HttpResponse, delay } from 'msw'
 import type { JsonBodyType } from 'msw'
+import { delay, HttpResponse } from 'msw'
 
 export function jsonOk<T extends JsonBodyType>(
   data: T,

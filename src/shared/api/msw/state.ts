@@ -1,6 +1,7 @@
-import { makeUser } from './factories/user'
-import type { User } from './factories/user'
 import { resetUsersDb } from '@/shared/api/msw/db/usersDb'
+
+import type { User } from './factories/user'
+import { makeUser } from './factories/user'
 
 const STORAGE_KEY = 'msw:state:me'
 

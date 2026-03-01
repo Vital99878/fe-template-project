@@ -1,6 +1,6 @@
 import { assertNever } from './assertNever'
-import { invalidTransition } from './invalidTransition'
 import type { ConfirmEvent, ConfirmState } from './confirmFsm.types'
+import { invalidTransition } from './invalidTransition'
 
 // Production-friendly FSM template:
 // - Discriminated unions for State/Event

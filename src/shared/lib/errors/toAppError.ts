@@ -1,5 +1,5 @@
-import type { AppError } from '@/shared/api/types'
 import { normalizeError } from '@/shared/api/index'
+import type { AppError } from '@/shared/api/types'
 
 function isAppError(value: unknown): value is AppError {
   if (!value || typeof value !== 'object') return false

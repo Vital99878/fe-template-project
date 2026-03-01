@@ -1,6 +1,7 @@
-import { textareaClasses } from './textareaClasses'
-import type { TextareaSize } from './textareaClasses'
 import type { TextareaHTMLAttributes } from 'react'
+
+import type { TextareaSize } from './textareaClasses'
+import { textareaClasses } from './textareaClasses'
 
 type Props = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   uiSize?: TextareaSize

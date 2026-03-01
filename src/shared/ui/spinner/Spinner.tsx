@@ -1,6 +1,7 @@
-import { spinnerClasses } from './spinnerClasses'
-import type { SpinnerSize } from './spinnerClasses'
 import type { HTMLAttributes } from 'react'
+
+import type { SpinnerSize } from './spinnerClasses'
+import { spinnerClasses } from './spinnerClasses'
 
 type Props = HTMLAttributes<HTMLSpanElement> & {
   uiSize?: SpinnerSize

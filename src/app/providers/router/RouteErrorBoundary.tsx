@@ -1,6 +1,7 @@
-import { useQueryClient } from '@tanstack/react-query'
 import type { QueryKey } from '@tanstack/react-query'
+import { useQueryClient } from '@tanstack/react-query'
 import type { ErrorComponentProps } from '@tanstack/react-router'
+
 import { ErrorScreen } from '@/shared/ui/blocks'
 
 function extractQueryKey(error: unknown): QueryKey | undefined {

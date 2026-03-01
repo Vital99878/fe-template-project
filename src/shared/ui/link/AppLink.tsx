@@ -1,8 +1,9 @@
-import { Link } from '@tanstack/react-router'
 import React from 'react'
-import { linkClasses } from './linkClasses'
+import { Link } from '@tanstack/react-router'
 import type { ReactNode } from 'react'
+
 import type { LinkSize, LinkVariant } from './linkClasses'
+import { linkClasses } from './linkClasses'
 
 type RouterLinkProps = React.ComponentProps<typeof Link>
 

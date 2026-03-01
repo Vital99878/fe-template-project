@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import type { ReactNode } from 'react'
+
 import { toAppError } from '@/shared/lib/errors/toAppError'
 
 type ErrorScreenProps = {

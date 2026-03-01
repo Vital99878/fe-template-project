@@ -1,5 +1,6 @@
-import { cardContentClasses } from './cardClasses'
 import type { HTMLAttributes } from 'react'
+
+import { cardContentClasses } from './cardClasses'
 
 type Props = HTMLAttributes<HTMLDivElement>
 

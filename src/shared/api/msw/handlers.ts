@@ -1,10 +1,12 @@
 import { HttpResponse } from 'msw'
-import { withScenario } from './withScenario'
-import { jsonError, jsonOk } from './responses'
+
 import { api } from '@/shared/api/endpoints'
-import { getMe, patchMe } from '@/shared/api/msw/state'
 import { getUserById, searchUsers } from '@/shared/api/msw/db/usersDb'
 import { getEnum, getInt, getString } from '@/shared/api/msw/lib/query'
+import { getMe, patchMe } from '@/shared/api/msw/state'
+
+import { jsonError, jsonOk } from './responses'
+import { withScenario } from './withScenario'
 
 export const handlers = [
   withScenario(api.auth.me, {
