@@ -1,4 +1,4 @@
-export * from './button'
+export { Button } from './button'
 export * from './field/Field'
 export * from './Inline-error/InlineError'
 export * from './input'

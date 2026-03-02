@@ -1,3 +1,4 @@
+// buttonClasses.ts
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger'
 export type ButtonSize = 'sm' | 'md' | 'lg'
 
@@ -23,13 +24,19 @@ export function buttonClasses({
   className,
 }: Opts = {}) {
   const base =
-    'inline-flex items-center justify-center gap-2 rounded-md font-medium transition ' +
+    'relative inline-flex items-center justify-center gap-2 rounded-md font-medium transition ' +
+    // важно для сжатия внутри flex/grid-контейнеров
+    'min-w-0 max-w-full ' +
+    'leading-none ' +
     'select-none whitespace-nowrap ' +
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-border/60 focus-visible:ring-offset-2 focus-visible:ring-offset-bg'
 
   const state = cx(
+    // active только когда можно нажимать
+    !(disabled || loading) && 'active:translate-y-px',
     (disabled || loading) && 'pointer-events-none opacity-60',
-    'active:translate-y-px', // лёгкий “нажим”
+    loading && 'cursor-wait',
+    disabled && !loading && 'cursor-not-allowed',
   )
 
   const variants: Record<ButtonVariant, string> = {
