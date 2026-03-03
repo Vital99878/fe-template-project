@@ -1,4 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
+
+import { AppLink } from '../shared/ui'
+
 import logo from '../logo.svg'
 
 export const Route = createFileRoute('/')({
@@ -8,31 +11,29 @@ export const Route = createFileRoute('/')({
 function App() {
   return (
     <div className="text-center">
-      <header className="min-h-screen flex flex-col items-center justify-center bg-[#282c34] text-white text-[calc(10px+2vmin)]">
+      <header className="flex min-h-screen flex-col items-center justify-center bg-[#282c34] text-[calc(10px+2vmin)] text-white">
         <img
           src={logo}
-          className="h-[40vmin] pointer-events-none animate-[spin_20s_linear_infinite]"
+          className="pointer-events-none h-[40vmin] animate-[spin_20s_linear_infinite]"
           alt="logo"
         />
         <p>
           Edit <code>src/routes/index.tsx</code> and save to reload.
         </p>
-        <a
-          className="text-[#61dafb] hover:underline"
+        <AppLink
+          variant={'muted'}
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
-        <a
-          className="text-[#61dafb] hover:underline"
-          href="https://tanstack.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        </AppLink>
+        <AppLink href="https://tanstack.com" target="_blank" rel="noopener noreferrer">
           Learn TanStack
-        </a>
+        </AppLink>
+        <AppLink variant={'danger'} to={`/profile/me`}>
+          Profile
+        </AppLink>
       </header>
     </div>
   )

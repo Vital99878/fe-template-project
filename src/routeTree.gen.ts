@@ -10,33 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProfileMeRouteImport } from './routes/profile/me'
+import { Route as DebugCrashRouteImport } from './routes/debug/crash'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfileMeRoute = ProfileMeRouteImport.update({
+  id: '/profile/me',
+  path: '/profile/me',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DebugCrashRoute = DebugCrashRouteImport.update({
+  id: '/debug/crash',
+  path: '/debug/crash',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/debug/crash': typeof DebugCrashRoute
+  '/profile/me': typeof ProfileMeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/debug/crash': typeof DebugCrashRoute
+  '/profile/me': typeof ProfileMeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/debug/crash': typeof DebugCrashRoute
+  '/profile/me': typeof ProfileMeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/debug/crash' | '/profile/me'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/debug/crash' | '/profile/me'
+  id: '__root__' | '/' | '/debug/crash' | '/profile/me'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DebugCrashRoute: typeof DebugCrashRoute
+  ProfileMeRoute: typeof ProfileMeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +68,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/profile/me': {
+      id: '/profile/me'
+      path: '/profile/me'
+      fullPath: '/profile/me'
+      preLoaderRoute: typeof ProfileMeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/debug/crash': {
+      id: '/debug/crash'
+      path: '/debug/crash'
+      fullPath: '/debug/crash'
+      preLoaderRoute: typeof DebugCrashRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DebugCrashRoute: DebugCrashRoute,
+  ProfileMeRoute: ProfileMeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

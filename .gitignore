@@ -17,3 +17,6 @@ npm-shrinkwrap.json
 yarn.lock
 bun.lockb
 
+
+*storybook.log
+storybook-static
