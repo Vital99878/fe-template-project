@@ -2,8 +2,6 @@ import { useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import { Home, Menu, X } from 'lucide-react'
 
-import { ProfileMePage } from '@/pages/profile-me'
-
 import { ThemeSwitch } from '@/features'
 
 export default function Header() {
@@ -11,7 +9,6 @@ export default function Header() {
 
   return (
     <>
-      <ProfileMePage />
       <header className="flex items-center bg-gray-800 p-4 text-white shadow-lg">
         <button
           onClick={() => setIsOpen(true)}

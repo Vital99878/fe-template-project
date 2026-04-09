@@ -1,6 +1,6 @@
 import { api } from '@/shared/api'
 import { apiQueryKey, useApiQuery } from '@/shared/api/reactQuery'
-import { Button, Field, Input, LinkAsButton, Textarea } from '@/shared/ui'
+import { Button, Field, Input, Textarea } from '@/shared/ui'
 import { PageQueryGuard } from '@/shared/ui/blocks/'
 import { Card, CardContent, CardHeader } from '@/shared/ui/card'
 import { Skeleton } from '@/shared/ui/skeleton'
@@ -22,9 +22,6 @@ export function ProfileMePage() {
           <Button variant={'secondary'}>Secondary</Button>
           <Button variant={'ghost'}>Ghost</Button>
           <Button variant={'danger'}>Danger</Button>
-          <LinkAsButton to={'/'} variant={'secondary'}>
-            LinkAsButton to Main
-          </LinkAsButton>
 
           <Field label={'some'}>
             <Input uiSize={'lg'} />
