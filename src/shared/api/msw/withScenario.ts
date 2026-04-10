@@ -8,7 +8,7 @@ import type { MockScenario } from './mockConfig'
 import { resolveScenario } from './mockConfig'
 import { forbidden, serverError, timeoutForever, unauthorized } from './responses'
 
-type ScenarioResolvers = Partial<Record<MockScenario, HttpResponseResolver>>
+export type ScenarioResolvers = Partial<Record<MockScenario, HttpResponseResolver>>
 
 export function withScenario(
   endpoint: Endpoint<any, any, any, any>,

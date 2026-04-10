@@ -1,3 +1,4 @@
+import type { MockScenario } from './msw/mockConfig'
 import { endpoint } from './endpoint'
 
 // Пример типов (потом заменишь на реальные)
@@ -26,3 +27,12 @@ export const api = {
     search: endpoint<void, UsersBySearch, QueryToSearchUsers, void>('GET', '/users'),
   },
 } as const
+
+export const scenario: Record<MockScenario, MockScenario> = {
+  forbidden: 'forbidden',
+  happy: 'happy',
+  networkError: 'networkError',
+  serverError: 'serverError',
+  timeout: 'timeout',
+  unauthorized: 'unauthorized',
+}

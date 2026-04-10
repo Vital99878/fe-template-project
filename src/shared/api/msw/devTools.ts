@@ -1,4 +1,4 @@
-import { api } from '@/shared/api/endpoints'
+import { api, scenario } from '@/shared/api/endpoints'
 
 import type { MockScenario } from './mockConfig'
 import {
@@ -25,5 +25,6 @@ export function exposeMswDevTools() {
       reset: () => resetMswState(),
     },
     api,
+    scenario,
   }
 }
